@@ -14,6 +14,11 @@
 		CC42B17A2C96267200E7BD82 /* PasswordManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B1792C96267200E7BD82 /* PasswordManagerTests.swift */; };
 		CC42B1842C96267200E7BD82 /* PasswordManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B1832C96267200E7BD82 /* PasswordManagerUITests.swift */; };
 		CC42B1862C96267200E7BD82 /* PasswordManagerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B1852C96267200E7BD82 /* PasswordManagerUITestsLaunchTests.swift */; };
+		CC42B19B2C96285900E7BD82 /* AddPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B19A2C96285900E7BD82 /* AddPasswordView.swift */; };
+		CC42B19E2C96295700E7BD82 /* StorePasswordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B19D2C96295700E7BD82 /* StorePasswordsView.swift */; };
+		CC82EDCB2C9D0158008BC932 /* PasswordManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC82EDCA2C9D0158008BC932 /* PasswordManagerView.swift */; };
+		CCEB6A252CEBD2380032B989 /* StoreInformation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CCEB6A232CEBD2380032B989 /* StoreInformation.xcdatamodeld */; };
+		CCF9E17C2CE9980600B7FF27 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF9E17B2CE9980600B7FF27 /* HomePageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,11 @@
 		CC42B17F2C96267200E7BD82 /* PasswordManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PasswordManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC42B1832C96267200E7BD82 /* PasswordManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagerUITests.swift; sourceTree = "<group>"; };
 		CC42B1852C96267200E7BD82 /* PasswordManagerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CC42B19A2C96285900E7BD82 /* AddPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPasswordView.swift; sourceTree = "<group>"; };
+		CC42B19D2C96295700E7BD82 /* StorePasswordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePasswordsView.swift; sourceTree = "<group>"; };
+		CC82EDCA2C9D0158008BC932 /* PasswordManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagerView.swift; sourceTree = "<group>"; };
+		CCEB6A242CEBD2380032B989 /* StoreInformation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StoreInformation.xcdatamodel; sourceTree = "<group>"; };
+		CCF9E17B2CE9980600B7FF27 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +84,9 @@
 		CC42B15C2C96266E00E7BD82 = {
 			isa = PBXGroup;
 			children = (
+				CCEB6A232CEBD2380032B989 /* StoreInformation.xcdatamodeld */,
+				CCF9E1812CE99BBB00B7FF27 /* UsersLoginAndSignIns */,
+				CC42B1952C9627CD00E7BD82 /* Views */,
 				CC42B1672C96266E00E7BD82 /* PasswordManager */,
 				CC42B1782C96267200E7BD82 /* PasswordManagerTests */,
 				CC42B1822C96267200E7BD82 /* PasswordManagerUITests */,
@@ -125,6 +138,24 @@
 				CC42B1852C96267200E7BD82 /* PasswordManagerUITestsLaunchTests.swift */,
 			);
 			path = PasswordManagerUITests;
+			sourceTree = "<group>";
+		};
+		CC42B1952C9627CD00E7BD82 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CC42B19A2C96285900E7BD82 /* AddPasswordView.swift */,
+				CC42B19D2C96295700E7BD82 /* StorePasswordsView.swift */,
+				CCF9E17B2CE9980600B7FF27 /* HomePageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CCF9E1812CE99BBB00B7FF27 /* UsersLoginAndSignIns */ = {
+			isa = PBXGroup;
+			children = (
+				CC82EDCA2C9D0158008BC932 /* PasswordManagerView.swift */,
+			);
+			path = UsersLoginAndSignIns;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +288,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC42B19E2C96295700E7BD82 /* StorePasswordsView.swift in Sources */,
 				CC42B16B2C96266E00E7BD82 /* ContentView.swift in Sources */,
 				CC42B1692C96266E00E7BD82 /* PasswordManagerApp.swift in Sources */,
+				CC82EDCB2C9D0158008BC932 /* PasswordManagerView.swift in Sources */,
+				CCF9E17C2CE9980600B7FF27 /* HomePageView.swift in Sources */,
+				CC42B19B2C96285900E7BD82 /* AddPasswordView.swift in Sources */,
+				CCEB6A252CEBD2380032B989 /* StoreInformation.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +458,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PasswordManager/Preview Content\"";
+				DEVELOPMENT_TEAM = Y995HR6W6U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -450,6 +487,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PasswordManager/Preview Content\"";
+				DEVELOPMENT_TEAM = Y995HR6W6U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -582,6 +620,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CCEB6A232CEBD2380032B989 /* StoreInformation.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CCEB6A242CEBD2380032B989 /* StoreInformation.xcdatamodel */,
+			);
+			currentVersion = CCEB6A242CEBD2380032B989 /* StoreInformation.xcdatamodel */;
+			name = StoreInformation.xcdatamodeld;
+			path = /Users/danielhernandez/Desktop/CPSC362Project/PasswordManager/StoreInformation.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CC42B15D2C96266E00E7BD82 /* Project object */;
 }
