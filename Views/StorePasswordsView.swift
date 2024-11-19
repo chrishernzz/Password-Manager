@@ -13,7 +13,7 @@ struct StorePasswordsView: View {
     @Environment(\.managedObjectContext) private var context
     //this will give us access to the entity type User
     var loggedInUser: User
-    //this will hold the passwords for the users as an array
+    //this will hold the passwords for the users as an array and will only be local to this view
     @State private var passwords: [Password] = []
 
     var body: some View {
@@ -21,6 +21,7 @@ struct StorePasswordsView: View {
             //loop through the array and have to put the id since there is nonen
             List(passwords, id: \.self) { password in
                 VStack(alignment: .leading, spacing: 5) {
+                    //side to side
                     HStack {
                         Text("Title:")
                             .font(.headline)

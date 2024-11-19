@@ -116,6 +116,7 @@ struct HomePageView: View{
                     //pass the whole thing in the information-> the login was a success
                     loginSuccess(user)
                 }
+                //if there is email but the password incorrect then pass in this error
                 else {
                     message = "Incorrect password. Please try again."
                 }

@@ -19,7 +19,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            //since it is intialize to true it will run this which is the animation
+            //since it is initialize to true it will run this which is the animation
             if (showAnimation) {
                 AnimationScreenView()
                     //.transition(.opacity)
