@@ -71,6 +71,7 @@ struct ContentView: View {
 //this will give the animation once you open the app
 struct AnimationScreenView: View {
     var body: some View {
+        //layered on top of another
         ZStack{
             Color.black.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             VStack {
