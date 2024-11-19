@@ -86,6 +86,7 @@ struct AnimationScreenView: View {
                     .foregroundColor(.white)
             }
         }
+        //this will give it a transition once it is displayed
         .transition(.opacity)
     }
 }
