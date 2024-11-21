@@ -132,41 +132,12 @@ struct HomePageView: View{
         email = ""
         password = ""
     }
-    
     //function for keeping track of the sign ups
     func signUpUser(context: NSManagedObjectContext) {
         //call the function here
         if !validUserInformation() {return}
 
-        let signUpURL = URL(string: "http://127.0.0.1:5000/api/register")!
-        var request = URLRequest(url: signUpURL)
-        request.httpMethod = "POST"
-        request.addValue("application.json", forHTTPHeaderField: "Content-Type")
-        //going to create a key with value String->Any
-        let requestInformation: [String: Any] = [
-            "username": email,
-            "password": password
-        ]
-        request.httpBody = try? JSONSerialization.data(withJSONObject: requestInformation)
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            //guard allows a if-> true else-> return
-            guard let data = data, error == nil else {
-                DispatchQueue.main.async {
-                    message = "Failed to connect to the server"
-                    showAlert = true
-                }
-                return
-            }
-        }
-//        if let httpResponse = response as? HTTPURLResponse {
-//            if httpResponse.statusCode == 201 {
-//                DispatchQueue.main.async {
-//                    message = "Account Created Successfully!"
-//                    showAlert = true
-//                }
-//            }
-//        }
-        /*//going to check if already exists
+        //going to check if already exists
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "email == %@", email)
         //read the data-> fetching will allow us to read
@@ -190,8 +161,7 @@ struct HomePageView: View{
         } catch {
             message = "Failed to create account. Please try again."
             showAlert = true
-        }*/
-        
+        }
         email = ""
         password = ""
     }

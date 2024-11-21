@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC01D73E2CEFF86600DBD447 /* StoreInformation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC01D73C2CEFF86500DBD447 /* StoreInformation.xcdatamodeld */; };
 		CC42B1692C96266E00E7BD82 /* PasswordManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B1682C96266E00E7BD82 /* PasswordManagerApp.swift */; };
 		CC42B16B2C96266E00E7BD82 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B16A2C96266E00E7BD82 /* ContentView.swift */; };
 		CC42B16D2C96267100E7BD82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC42B16C2C96267100E7BD82 /* Assets.xcassets */; };
@@ -17,7 +18,6 @@
 		CC42B19B2C96285900E7BD82 /* AddPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B19A2C96285900E7BD82 /* AddPasswordView.swift */; };
 		CC42B19E2C96295700E7BD82 /* StorePasswordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B19D2C96295700E7BD82 /* StorePasswordsView.swift */; };
 		CC82EDCB2C9D0158008BC932 /* PasswordManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC82EDCA2C9D0158008BC932 /* PasswordManagerView.swift */; };
-		CCEB6A252CEBD2380032B989 /* StoreInformation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CCEB6A232CEBD2380032B989 /* StoreInformation.xcdatamodeld */; };
 		CCF9E17C2CE9980600B7FF27 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF9E17B2CE9980600B7FF27 /* HomePageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC01D73D2CEFF86500DBD447 /* StoreInformation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StoreInformation.xcdatamodel; sourceTree = "<group>"; };
 		CC42B1652C96266E00E7BD82 /* PasswordManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PasswordManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC42B1682C96266E00E7BD82 /* PasswordManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagerApp.swift; sourceTree = "<group>"; };
 		CC42B16A2C96266E00E7BD82 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,7 +53,6 @@
 		CC42B19A2C96285900E7BD82 /* AddPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPasswordView.swift; sourceTree = "<group>"; };
 		CC42B19D2C96295700E7BD82 /* StorePasswordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePasswordsView.swift; sourceTree = "<group>"; };
 		CC82EDCA2C9D0158008BC932 /* PasswordManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagerView.swift; sourceTree = "<group>"; };
-		CCEB6A242CEBD2380032B989 /* StoreInformation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StoreInformation.xcdatamodel; sourceTree = "<group>"; };
 		CCF9E17B2CE9980600B7FF27 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,7 +84,7 @@
 		CC42B15C2C96266E00E7BD82 = {
 			isa = PBXGroup;
 			children = (
-				CCEB6A232CEBD2380032B989 /* StoreInformation.xcdatamodeld */,
+				CC01D73C2CEFF86500DBD447 /* StoreInformation.xcdatamodeld */,
 				CCF9E1812CE99BBB00B7FF27 /* UsersLoginAndSignIns */,
 				CC42B1952C9627CD00E7BD82 /* Views */,
 				CC42B1672C96266E00E7BD82 /* PasswordManager */,
@@ -293,8 +293,8 @@
 				CC42B1692C96266E00E7BD82 /* PasswordManagerApp.swift in Sources */,
 				CC82EDCB2C9D0158008BC932 /* PasswordManagerView.swift in Sources */,
 				CCF9E17C2CE9980600B7FF27 /* HomePageView.swift in Sources */,
+				CC01D73E2CEFF86600DBD447 /* StoreInformation.xcdatamodeld in Sources */,
 				CC42B19B2C96285900E7BD82 /* AddPasswordView.swift in Sources */,
-				CCEB6A252CEBD2380032B989 /* StoreInformation.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,12 +622,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CCEB6A232CEBD2380032B989 /* StoreInformation.xcdatamodeld */ = {
+		CC01D73C2CEFF86500DBD447 /* StoreInformation.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				CCEB6A242CEBD2380032B989 /* StoreInformation.xcdatamodel */,
+				CC01D73D2CEFF86500DBD447 /* StoreInformation.xcdatamodel */,
 			);
-			currentVersion = CCEB6A242CEBD2380032B989 /* StoreInformation.xcdatamodel */;
+			currentVersion = CC01D73D2CEFF86500DBD447 /* StoreInformation.xcdatamodel */;
 			name = StoreInformation.xcdatamodeld;
 			path = /Users/danielhernandez/Desktop/CPSC362Project/PasswordManager/StoreInformation.xcdatamodeld;
 			sourceTree = "<group>";

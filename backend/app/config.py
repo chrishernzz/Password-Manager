@@ -1,1 +1,0 @@
-# load environment variables (keys, database paths) using dotenv
