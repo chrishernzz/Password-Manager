@@ -81,7 +81,7 @@ struct AnimationScreenView: View {
                     .frame(width: 300, height: 300)
                     .padding(.top, -150)
                     .padding(.bottom, -70)
-                Text("Double00 Mysterious")
+                Text("KodiCrew Mysterious")
                     .font(.largeTitle)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .foregroundColor(.white)
