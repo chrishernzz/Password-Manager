@@ -29,7 +29,7 @@ struct HomePageView: View{
             Color.gray.edgesIgnoringSafeArea(.all)
             //VStack: top to bottom
             VStack{
-                Text("Double00 Mysterious")
+                Text("KodiCrew Mysterious")
                     .foregroundColor(.black)
                     .font(.largeTitle)
                     .padding(.top, -100)
