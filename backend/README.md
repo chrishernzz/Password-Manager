@@ -4,10 +4,12 @@
 
 1. **Clone the repository**:
 ```bash
-https://github.com/AdrianLBoc/Password-Manager-Project.git
+https://github.com/chrishernzz/Password-Manager.git
 ```
 2. **Create a virtual environment**:
+- if on backend:
 ```bash
+cd backend
 python -m venv venv
 ```
 3. **Activate the virtual environment**:
@@ -23,22 +25,21 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-5. **Run the application**:
-```bash
-python (wip)
-```
-## Project Structure
-- Password-Manager-Project
-    - venv/
-    - app/
-        - __init__.py
-        - models.py
-        - encryption.py
-        - password_utils.py
-        - database.py
-        - config.py
-        - main.py
-    - .env
-    - .gitignore
-    - requirements.txt
-    - readme.md
+
+## Project Structure Backend
+- Password-Manager
+    - backend/
+        - app/
+            - __init__.py
+            - models.py
+            - encryption.py
+            - password_utils.py
+            - database.py
+            - config.py
+            - main.py
+            - .env
+        - venv/
+        - .gitignore
+        - requirements.txt
+        - readme.md
+        - server.py
