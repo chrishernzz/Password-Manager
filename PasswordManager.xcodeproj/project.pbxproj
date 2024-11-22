@@ -18,6 +18,7 @@
 		CC42B19B2C96285900E7BD82 /* AddPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B19A2C96285900E7BD82 /* AddPasswordView.swift */; };
 		CC42B19E2C96295700E7BD82 /* StorePasswordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B19D2C96295700E7BD82 /* StorePasswordsView.swift */; };
 		CC82EDCB2C9D0158008BC932 /* PasswordManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC82EDCA2C9D0158008BC932 /* PasswordManagerView.swift */; };
+		CCF55F162CF125350013D76B /* PasswordCryptoManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF55F152CF125350013D76B /* PasswordCryptoManger.swift */; };
 		CCF9E17C2CE9980600B7FF27 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF9E17B2CE9980600B7FF27 /* HomePageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		CC42B19A2C96285900E7BD82 /* AddPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPasswordView.swift; sourceTree = "<group>"; };
 		CC42B19D2C96295700E7BD82 /* StorePasswordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePasswordsView.swift; sourceTree = "<group>"; };
 		CC82EDCA2C9D0158008BC932 /* PasswordManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagerView.swift; sourceTree = "<group>"; };
+		CCF55F152CF125350013D76B /* PasswordCryptoManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCryptoManger.swift; sourceTree = "<group>"; };
 		CCF9E17B2CE9980600B7FF27 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				CC82EDCA2C9D0158008BC932 /* PasswordManagerView.swift */,
+				CCF55F152CF125350013D76B /* PasswordCryptoManger.swift */,
 			);
 			path = UsersLoginAndSignIns;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				CC42B19E2C96295700E7BD82 /* StorePasswordsView.swift in Sources */,
 				CC42B16B2C96266E00E7BD82 /* ContentView.swift in Sources */,
 				CC42B1692C96266E00E7BD82 /* PasswordManagerApp.swift in Sources */,
+				CCF55F162CF125350013D76B /* PasswordCryptoManger.swift in Sources */,
 				CC82EDCB2C9D0158008BC932 /* PasswordManagerView.swift in Sources */,
 				CCF9E17C2CE9980600B7FF27 /* HomePageView.swift in Sources */,
 				CC01D73E2CEFF86600DBD447 /* StoreInformation.xcdatamodeld in Sources */,

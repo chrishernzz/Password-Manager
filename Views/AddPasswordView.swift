@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct AddPasswordView: View{
-    //able to use this between any strucs since it is global
+    //able to use this between any structs since it is global and proivdes access to the NSManagedObjectContext. need this to use the CRUD in Core Data
     @Environment(\.managedObjectContext) var context
     //call the user entity
     var loggedInUser: User
@@ -61,10 +61,18 @@ struct AddPasswordView: View{
             //you now call the view-> PasswordManagerView that will allow us to use the addPassword function
             let passwordManager = PasswordManagerView(context: context)
             passwordManager.addPassword(for: loggedInUser, title: title, emailOrusername: emailOrusername, password: password)
+            //clear the data enter after the password is save
             title = ""
             emailOrusername = ""
             password = ""
         }
     }
 }
+//function to keep track of the length and special characters and return a boolean
+//func isPasswordValid(_ password: String) -> Bool {
+//    let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*(),.?\":{}|<>]).{6,}$"
+//    //the predicates allow us to filter the result
+//    let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+//    return passwordTest.evaluate(with: password)
+//}
 

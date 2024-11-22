@@ -179,13 +179,33 @@ struct HomePageView: View{
             showAlert = true
             return false
         }
+        //validates the email here
+        if !isValidEmail(email) {
+            message = "Please enter a valid email address (e.g., user@gmail.com)."
+            showAlert = true
+            return false
+        }
         if (password.isEmpty) {
             message = "Password cannot be empty. Please enter your password."
             showAlert = true
             return false
         }
+        // Validate password strength
+//        if (!isPasswordValid(password)) {
+//            message = "Password must be at least 6 characters long and include at least one uppercase letter, one lowercase letter, one number, and one symbol."
+//            showAlert = true
+//            return false
+//        }
         return true
     }
+    //function makes sure it allows the '@' symbol
+    func isValidEmail(_ email: String) -> Bool {
+        // Regular expression to validate email
+        let emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailTest.evaluate(with: email)
+    }
+    
 }
 
 

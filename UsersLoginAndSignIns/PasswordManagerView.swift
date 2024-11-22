@@ -16,19 +16,30 @@ class PasswordManagerView: ObservableObject {
     }
     //function will allow the user to add the password information
     func addPassword(for user: User, title: String, emailOrusername: String, password: String) {
-        //call the entity Password and pass in the values
+        guard let encryptedPassword = PasswordCryptoManager.encryptPassword(password) else {
+            print("Failed to encrypt the password.")
+            return
+        }
+        print("Encrypted Password: \(encryptedPassword.base64EncodedString())")
+        // Decrypt the password to verify it works
+        if let decryptedPassword = PasswordCryptoManager.decryptPassword(encryptedPassword) {
+            print("Decrypted Password: \(decryptedPassword)")
+        } else {
+            print("Failed to decrypt the password.")
+        }
+
         let newPassword = Password(context: context)
         newPassword.title = title
         newPassword.emailOrusername = emailOrusername
-        newPassword.password = password
+        newPassword.encryptedPassword = encryptedPassword
         newPassword.user = user
 
         do {
-            //save the content to the core data 
             try context.save()
             print("Password saved successfully for user: \(user.email ?? "unknown")")
         } catch {
             print("Error saving password: \(error.localizedDescription)")
         }
     }
+
 }
