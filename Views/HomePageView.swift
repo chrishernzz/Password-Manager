@@ -44,7 +44,7 @@ struct HomePageView: View{
                         .disableAutocorrection(true)
                         .padding()
                         .background(Color.white)
-                        .cornerRadius(8) // Optional for rounded corners
+                        .cornerRadius(8)
                         .foregroundColor(.black)
                         .colorScheme(.light)
                     
@@ -60,11 +60,12 @@ struct HomePageView: View{
                         .disableAutocorrection(true)
                         .padding()
                         .background(Color.white)
-                        .cornerRadius(8) // Optional for rounded corners
+                        .cornerRadius(8)
                         .foregroundColor(.black)
                         .colorScheme(.light)
                 }
                 .padding(.horizontal)
+                //need the login and sign up button side to side so use HStack-> indicates the horizontal
                 HStack{
                     /*going to create button one that is login and one that is sign up*/
                     Button(action: {
@@ -128,6 +129,7 @@ struct HomePageView: View{
         } catch {
             message = "Failed to log in. Please try again."
         }
+        //clear the inputs
         showAlert = true
         email = ""
         password = ""
@@ -166,6 +168,14 @@ struct HomePageView: View{
         password = ""
     }
     
+    //function makes sure it allows the '@' symbol
+    func isValidEmail(_ email: String) -> Bool {
+        // Regular expression to validate email
+        let emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+        //predicate will filter the results-> will filter the fetcching
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailTest.evaluate(with: email)
+    }
     //function is going to check for the user input validation
     func validUserInformation() -> Bool {
         //check if the user tries to sign up without inputing, then error right away
@@ -179,7 +189,7 @@ struct HomePageView: View{
             showAlert = true
             return false
         }
-        //validates the email here
+        //validates the email here-> call the function to make sure it uses '@'
         if !isValidEmail(email) {
             message = "Please enter a valid email address (e.g., user@gmail.com)."
             showAlert = true
@@ -192,14 +202,6 @@ struct HomePageView: View{
         }
         return true
     }
-    //function makes sure it allows the '@' symbol
-    func isValidEmail(_ email: String) -> Bool {
-        // Regular expression to validate email
-        let emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
-        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        return emailTest.evaluate(with: email)
-    }
-    
 }
 
 
