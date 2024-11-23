@@ -8,71 +8,97 @@
 import Foundation
 import SwiftUI
 
-struct AddPasswordView: View{
-    //able to use this between any structs since it is global and proivdes access to the NSManagedObjectContext. need this to use the CRUD in Core Data
+struct AddPasswordView: View {
     @Environment(\.managedObjectContext) var context
-    //call the user entity
     var loggedInUser: User
-    //since they are state, they can only be used within this strcuture
     @State private var title: String = ""
     @State private var emailOrusername: String = ""
     @State private var password: String = ""
-    
-    var body: some View{
-        //this makes it into a group
+    @State private var passwordStrengthMessage: String = ""
+    @State private var passwordStrengthColor: Color = .red
+
+    var body: some View {
         Form {
-            Section(header: Text("Website Details")){
-                TextField("Title",text: $title)
-                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+            Section(header: Text("Website Details")) {
+                TextField("Title", text: $title)
+                    .autocapitalization(.none)
                     .disableAutocorrection(true)
-                TextField("Email or Username",text: $emailOrusername)
-                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+
+                TextField("Email or Username", text: $emailOrusername)
+                    .autocapitalization(.none)
                     .disableAutocorrection(true)
-                SecureField("Password",text: $password)
-                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+
+                SecureField("Password", text: $password)
+                    .autocapitalization(.none)
                     .disableAutocorrection(true)
+                    .onChange(of: password) { _ in
+                        validatePasswordStrength(password)
+                    }
+                Text(passwordStrengthMessage)
+                    .foregroundColor(passwordStrengthColor)
+                    .font(.footnote)
             }
+
             Button(action: {
-                //call the savePassword() function once the save password is access
                 savePassword()
             }) {
                 Text("Save Password")
-                    .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/,maxWidth: .infinity)
+                    .frame(minWidth: 0, maxWidth: .infinity)
                     .padding()
-                    //if it is filled then print color green meaning it is correct
-                    .background(informationFilled ? Color.green: Color.gray)
+                    .background(informationFilled ? Color.green : Color.gray)
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
-            //disable the button if not filled so it wont let user to save the passwor
             .disabled(!informationFilled)
         }
     }
-    
-    //creating a check that returns if password is valid (computed properties)
-    var informationFilled: Bool{
-        //if they are not empty, then valid
+    //will check if it is not empty
+    var informationFilled: Bool {
         return !title.isEmpty && !emailOrusername.isEmpty && !password.isEmpty
     }
-    //creating a function that saves all the passwords
-    func savePassword(){    
-        //if not empty then save the password
-        if(informationFilled){
-            //you now call the view-> PasswordManagerView that will allow us to use the addPassword function
+    //this saves the password
+    func savePassword() {
+        if (!isPasswordValid(password)) {
+            // Display a feedback message if the password is not valid
+            passwordStrengthMessage = "Password is not strong enough."
+            passwordStrengthColor = .red
+            return
+        }
+        if (informationFilled) {
             let passwordManager = PasswordManagerView(context: context)
             passwordManager.addPassword(for: loggedInUser, title: title, emailOrusername: emailOrusername, password: password)
-            //clear the data enter after the password is save
             title = ""
             emailOrusername = ""
             password = ""
+            passwordStrengthMessage = ""
+        }
+    }
+    //makes sure we use a character for upper and lower, number, and a hashtag
+    func isPasswordValid(_ password: String) -> Bool {
+        let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*(),.?\":{}|<>]).{6,}$"
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+        return passwordTest.evaluate(with: password)
+    }
+    //function going to check how strong is the user password
+    func validatePasswordStrength(_ password: String) {
+        if (password.isEmpty) {
+            passwordStrengthMessage = "Password cannot be empty."
+            passwordStrengthColor = .red
+        } 
+        //has to have a length greater than 6
+        else if (password.count < 6) {
+            passwordStrengthMessage = "Password is too short. Minimum 6 characters."
+            passwordStrengthColor = .orange
+        }
+        else if (!isPasswordValid(password)) {
+            passwordStrengthMessage = "Password must include an uppercase letter, a number, and a special character."
+            passwordStrengthColor = .red
+        } 
+        //if has everything then the passwrod is strong
+        else {
+            passwordStrengthMessage = "Strong password!"
+            passwordStrengthColor = .green
         }
     }
 }
-//function to keep track of the length and special characters and return a boolean
-//func isPasswordValid(_ password: String) -> Bool {
-//    let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*(),.?\":{}|<>]).{6,}$"
-//    //the predicates allow us to filter the result
-//    let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
-//    return passwordTest.evaluate(with: password)
-//}
 

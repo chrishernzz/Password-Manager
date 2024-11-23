@@ -190,12 +190,6 @@ struct HomePageView: View{
             showAlert = true
             return false
         }
-        // Validate password strength
-//        if (!isPasswordValid(password)) {
-//            message = "Password must be at least 6 characters long and include at least one uppercase letter, one lowercase letter, one number, and one symbol."
-//            showAlert = true
-//            return false
-//        }
         return true
     }
     //function makes sure it allows the '@' symbol
