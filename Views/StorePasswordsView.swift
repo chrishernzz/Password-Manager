@@ -71,10 +71,6 @@ struct StorePasswordsView: View {
                 .onDelete(perform: deletePassword)
             }
             .navigationTitle("Stored Passwords")
-            //this will add an edit button on top where the navigation title is at
-            .toolbar {
-                EditButton()
-            }
             .onAppear {
                 fetchPasswords()
             }
