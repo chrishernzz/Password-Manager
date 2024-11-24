@@ -14,7 +14,7 @@ struct StorePasswordsView: View {
     var loggedInUser: User
     @State private var passwords: [Password] = []
     @State private var visiblePasswordIndex: Int? = nil
-
+    
     var body: some View {
         NavigationView {
             List {
@@ -41,12 +41,13 @@ struct StorePasswordsView: View {
                                 if let decryptedPassword = PasswordCryptoManager.decryptPassword(password.encryptedPassword ?? Data()) {
                                     Text(decryptedPassword)
                                         .font(.body)
-                                } 
+                                }
                                 else {
                                     Text("Decryption Failed")
                                         .font(.body)
                                 }
-                            } else {
+                            }
+                            else {
                                 Text(password.encryptedPassword?.base64EncodedString() ?? "No Encrypted Data")
                                     .font(.body)
                                     .foregroundColor(.gray)
@@ -54,7 +55,7 @@ struct StorePasswordsView: View {
                             Button(action: {
                                 if (visiblePasswordIndex == index) {
                                     visiblePasswordIndex = nil
-                                } 
+                                }
                                 else {
                                     visiblePasswordIndex = index
                                 }
@@ -66,8 +67,14 @@ struct StorePasswordsView: View {
                     }
                     .padding(.vertical, 5)
                 }
+                //going to use the .onDelete() method that will allow me to delete-> all you have to do is swipe, it is going to remove it from the array
+                .onDelete(perform: deletePassword)
             }
             .navigationTitle("Stored Passwords")
+            //this will add an edit button on top where the navigation title is at
+            .toolbar {
+                EditButton()
+            }
             .onAppear {
                 fetchPasswords()
             }
@@ -81,6 +88,21 @@ struct StorePasswordsView: View {
             passwords = try context.fetch(fetchRequest)
         } catch {
             print("Error fetching passwords: \(error.localizedDescription)")
+        }
+    }
+    //this function will allow me to delete an item
+    private func deletePassword(at offsets: IndexSet) {
+        //loop through the array
+        for index in offsets {
+            let passwordToDelete = passwords[index]
+            context.delete(passwordToDelete)
+        }
+        do {
+            //alwasy save it so it can save in the core data
+            try context.save()
+            fetchPasswords()
+        } catch {
+            print("Error deleting password: \(error.localizedDescription)")
         }
     }
 }
