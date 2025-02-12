@@ -9,14 +9,16 @@ import Foundation
 import SwiftUI
 
 struct AddPasswordView: View {
-    @Environment(\.managedObjectContext) var context
-    var loggedInUser: User
+    @ObservedObject var passwordManagerAdd = PasswordManagerAdd()
+    
     //since using state is only access within this view
     @State private var title: String = ""
     @State private var emailOrusername: String = ""
     @State private var password: String = ""
     @State private var passwordStrengthMessage: String = ""
     @State private var passwordStrengthColor: Color = .gray
+    @State private var showAlert = false
+    @State private var alertMessage = ""
 
     var body: some View {
         Form {
@@ -53,6 +55,9 @@ struct AddPasswordView: View {
                     .cornerRadius(10)
             }
             .disabled(!informationFilled)
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text(""), message: Text(alertMessage), dismissButton: .default(Text("Ok")))
+            }
         }
     }
     //will check if it is not empty
@@ -69,14 +74,19 @@ struct AddPasswordView: View {
         }
         //if they are not empty then run this
         if (informationFilled) {
-            //call the struct that allows me to get access to the addPassword functio
-            let passwordManager = PasswordManagerView(context: context)
-            passwordManager.addPassword(for: loggedInUser, title: title, emailOrusername: emailOrusername, password: password)
-            //reset the input
-            title = ""
-            emailOrusername = ""
-            password = ""
-            passwordStrengthMessage = ""
+            passwordManagerAdd.savePassword(title: title, emailOrUsername: emailOrusername, password: password) { success, message in
+                DispatchQueue.main.async {
+                    self.alertMessage = message
+                    self.showAlert = true
+                    if success {
+                        title = ""
+                        emailOrusername = ""
+                        password = ""
+                        passwordStrengthMessage = ""
+                        passwordStrengthColor = .gray
+                    }
+                }
+            }
         }
     }
     //makes sure we use a character for upper and lower, number, and a hashtag

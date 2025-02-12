@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CC01D73E2CEFF86600DBD447 /* StoreInformation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC01D73C2CEFF86500DBD447 /* StoreInformation.xcdatamodeld */; };
 		CC42B1692C96266E00E7BD82 /* PasswordManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B1682C96266E00E7BD82 /* PasswordManagerApp.swift */; };
 		CC42B16B2C96266E00E7BD82 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B16A2C96266E00E7BD82 /* ContentView.swift */; };
 		CC42B16D2C96267100E7BD82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC42B16C2C96267100E7BD82 /* Assets.xcassets */; };
@@ -17,8 +16,12 @@
 		CC42B1862C96267200E7BD82 /* PasswordManagerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B1852C96267200E7BD82 /* PasswordManagerUITestsLaunchTests.swift */; };
 		CC42B19B2C96285900E7BD82 /* AddPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B19A2C96285900E7BD82 /* AddPasswordView.swift */; };
 		CC42B19E2C96295700E7BD82 /* StorePasswordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B19D2C96295700E7BD82 /* StorePasswordsView.swift */; };
-		CC82EDCB2C9D0158008BC932 /* PasswordManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC82EDCA2C9D0158008BC932 /* PasswordManagerView.swift */; };
-		CCF55F162CF125350013D76B /* PasswordCryptoManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF55F152CF125350013D76B /* PasswordCryptoManger.swift */; };
+		CCB9AF1F2D5D0F21009D3B48 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCB9AF1E2D5D0F21009D3B48 /* GoogleService-Info.plist */; };
+		CCB9AF222D5D1176009D3B48 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CCB9AF212D5D1176009D3B48 /* FirebaseAnalytics */; };
+		CCB9AF242D5D1176009D3B48 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CCB9AF232D5D1176009D3B48 /* FirebaseAuth */; };
+		CCB9AF262D5D1176009D3B48 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = CCB9AF252D5D1176009D3B48 /* FirebaseCore */; };
+		CCB9AF282D5D1176009D3B48 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = CCB9AF272D5D1176009D3B48 /* FirebaseDatabase */; };
+		CCB9AF2A2D5D1176009D3B48 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CCB9AF292D5D1176009D3B48 /* FirebaseFirestore */; };
 		CCF9E17C2CE9980600B7FF27 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF9E17B2CE9980600B7FF27 /* HomePageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +43,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CC01D73D2CEFF86500DBD447 /* StoreInformation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StoreInformation.xcdatamodel; sourceTree = "<group>"; };
 		CC42B1652C96266E00E7BD82 /* PasswordManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PasswordManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC42B1682C96266E00E7BD82 /* PasswordManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagerApp.swift; sourceTree = "<group>"; };
 		CC42B16A2C96266E00E7BD82 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,16 +55,24 @@
 		CC42B1852C96267200E7BD82 /* PasswordManagerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CC42B19A2C96285900E7BD82 /* AddPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPasswordView.swift; sourceTree = "<group>"; };
 		CC42B19D2C96295700E7BD82 /* StorePasswordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePasswordsView.swift; sourceTree = "<group>"; };
-		CC82EDCA2C9D0158008BC932 /* PasswordManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagerView.swift; sourceTree = "<group>"; };
-		CCF55F152CF125350013D76B /* PasswordCryptoManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCryptoManger.swift; sourceTree = "<group>"; };
+		CCB9AF1E2D5D0F21009D3B48 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CCF9E17B2CE9980600B7FF27 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		CCB9AF2C2D5D1B15009D3B48 /* Firebase */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Firebase; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CC42B1622C96266E00E7BD82 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCB9AF222D5D1176009D3B48 /* FirebaseAnalytics in Frameworks */,
+				CCB9AF262D5D1176009D3B48 /* FirebaseCore in Frameworks */,
+				CCB9AF282D5D1176009D3B48 /* FirebaseDatabase in Frameworks */,
+				CCB9AF2A2D5D1176009D3B48 /* FirebaseFirestore in Frameworks */,
+				CCB9AF242D5D1176009D3B48 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,8 +96,7 @@
 		CC42B15C2C96266E00E7BD82 = {
 			isa = PBXGroup;
 			children = (
-				CC01D73C2CEFF86500DBD447 /* StoreInformation.xcdatamodeld */,
-				CCF9E1812CE99BBB00B7FF27 /* UsersLoginAndSignIns */,
+				CCB9AF2C2D5D1B15009D3B48 /* Firebase */,
 				CC42B1952C9627CD00E7BD82 /* Views */,
 				CC42B1672C96266E00E7BD82 /* PasswordManager */,
 				CC42B1782C96267200E7BD82 /* PasswordManagerTests */,
@@ -113,6 +122,7 @@
 				CC42B16A2C96266E00E7BD82 /* ContentView.swift */,
 				CC42B16C2C96267100E7BD82 /* Assets.xcassets */,
 				CC42B16E2C96267100E7BD82 /* Preview Content */,
+				CCB9AF1E2D5D0F21009D3B48 /* GoogleService-Info.plist */,
 			);
 			path = PasswordManager;
 			sourceTree = "<group>";
@@ -152,15 +162,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		CCF9E1812CE99BBB00B7FF27 /* UsersLoginAndSignIns */ = {
-			isa = PBXGroup;
-			children = (
-				CC82EDCA2C9D0158008BC932 /* PasswordManagerView.swift */,
-				CCF55F152CF125350013D76B /* PasswordCryptoManger.swift */,
-			);
-			path = UsersLoginAndSignIns;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -175,6 +176,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CCB9AF2C2D5D1B15009D3B48 /* Firebase */,
 			);
 			name = PasswordManager;
 			productName = PasswordManager;
@@ -225,7 +229,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					CC42B1642C96266E00E7BD82 = {
 						CreatedOnToolsVersion = 15.4;
@@ -249,6 +253,9 @@
 				Base,
 			);
 			mainGroup = CC42B15C2C96266E00E7BD82;
+			packageReferences = (
+				CCB9AF202D5D1176009D3B48 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = CC42B1662C96266E00E7BD82 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -267,6 +274,7 @@
 			files = (
 				CC42B1702C96267100E7BD82 /* Preview Assets.xcassets in Resources */,
 				CC42B16D2C96267100E7BD82 /* Assets.xcassets in Resources */,
+				CCB9AF1F2D5D0F21009D3B48 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,10 +302,7 @@
 				CC42B19E2C96295700E7BD82 /* StorePasswordsView.swift in Sources */,
 				CC42B16B2C96266E00E7BD82 /* ContentView.swift in Sources */,
 				CC42B1692C96266E00E7BD82 /* PasswordManagerApp.swift in Sources */,
-				CCF55F162CF125350013D76B /* PasswordCryptoManger.swift in Sources */,
-				CC82EDCB2C9D0158008BC932 /* PasswordManagerView.swift in Sources */,
 				CCF9E17C2CE9980600B7FF27 /* HomePageView.swift in Sources */,
-				CC01D73E2CEFF86600DBD447 /* StoreInformation.xcdatamodeld in Sources */,
 				CC42B19B2C96285900E7BD82 /* AddPasswordView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,7 +520,6 @@
 		CC42B18D2C96267200E7BD82 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -534,7 +538,6 @@
 		CC42B18E2C96267200E7BD82 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -553,7 +556,6 @@
 		CC42B1902C96267200E7BD82 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -570,7 +572,6 @@
 		CC42B1912C96267200E7BD82 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -625,19 +626,44 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCVersionGroup section */
-		CC01D73C2CEFF86500DBD447 /* StoreInformation.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				CC01D73D2CEFF86500DBD447 /* StoreInformation.xcdatamodel */,
-			);
-			currentVersion = CC01D73D2CEFF86500DBD447 /* StoreInformation.xcdatamodel */;
-			name = StoreInformation.xcdatamodeld;
-			path = /Users/danielhernandez/Desktop/CPSC362Project/PasswordManager/StoreInformation.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
+/* Begin XCRemoteSwiftPackageReference section */
+		CCB9AF202D5D1176009D3B48 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.8.1;
+			};
 		};
-/* End XCVersionGroup section */
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CCB9AF212D5D1176009D3B48 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCB9AF202D5D1176009D3B48 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		CCB9AF232D5D1176009D3B48 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCB9AF202D5D1176009D3B48 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		CCB9AF252D5D1176009D3B48 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCB9AF202D5D1176009D3B48 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		CCB9AF272D5D1176009D3B48 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCB9AF202D5D1176009D3B48 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		CCB9AF292D5D1176009D3B48 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCB9AF202D5D1176009D3B48 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CC42B15D2C96266E00E7BD82 /* Project object */;
 }

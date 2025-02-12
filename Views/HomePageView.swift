@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import CoreData
 
 struct HomePageView: View{
     /*as for binding, it will allow the child view to modify(read and write)
@@ -19,10 +18,8 @@ struct HomePageView: View{
     @State private var email: String = ""
     @State private var password: String = ""
     
-    //going to create it globally so now you can access it in any view
-    @Environment(\.managedObjectContext) private var context
-    //closure function that takes in User (entity) as an parameter
-    var loginSuccess: (User) -> Void
+    //create an observed that will allow us to observed the ObservableObject
+    @ObservedObject var authMangager = AuthManager()
     
     var body: some View{
         ZStack {
@@ -69,7 +66,7 @@ struct HomePageView: View{
                 HStack{
                     /*going to create button one that is login and one that is sign up*/
                     Button(action: {
-                        loginUser(context: context)
+                        loginUser()
                     }){
                         Text("Login")
                             .frame(minWidth: 0, maxWidth: .infinity)
@@ -79,7 +76,7 @@ struct HomePageView: View{
                             .cornerRadius(10)
                     }
                     Button(action: {
-                        signUpUser(context: context)
+                        signUpUser()
                     }) {
                         Text("Sign Up")
                             .frame(minWidth: 0, maxWidth: .infinity)
@@ -101,71 +98,33 @@ struct HomePageView: View{
         }
     }
     //function to now read if the user exits
-    func loginUser(context: NSManagedObjectContext) {
-        //call the function here
-        if !validUserInformation() {return}
-        
-        //going to fetch request which allows us to read
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "email == %@", email)
-        do {
-            //unwrapping and we are looking for the first email (unique)
-            if let user = try context.fetch(fetchRequest).first {
-                if (user.password == password) {
+    func loginUser() {
+        authMangager.loginUser(email: email, password: password) { success, message in
+            DispatchQueue.main.async {
+                self.message = message
+                self.showAlert = true
+                if success {
                     authenticatedPass = true
-                    message = "Login Successful!"
-                    //pass the whole thing in the information-> the login was a success
-                    loginSuccess(user)
                 }
-                //if there is email but the password incorrect then pass in this error
-                else {
-                    message = "Incorrect password. Please try again."
-                }
-            } 
-            //if no user found-> will return nil means empty
-            else {
-                message = "No account found for this email. Please sign up."
+                email = ""
+                password = ""
             }
-        } catch {
-            message = "Failed to log in. Please try again."
         }
-        //clear the inputs
-        showAlert = true
-        email = ""
-        password = ""
     }
     //function for keeping track of the sign ups
-    func signUpUser(context: NSManagedObjectContext) {
-        //call the function here
-        if !validUserInformation() {return}
-
-        //going to check if already exists
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "email == %@", email)
-        //read the data-> fetching will allow us to read
-        if let existingUsers = try? context.fetch(fetchRequest), !existingUsers.isEmpty {
-            message = "This email is already registered. Please try logging in."
-            showAlert = true
-            return
+    func signUpUser() {
+        authMangager.signUpUser(email: email, password: password) { success, message in
+            DispatchQueue.main.async {
+                print("🔥 Sign-Up Debug: \(message)") // Debugging output
+                self.message = message
+                self.showAlert = true
+                if success {
+                    authenticatedPass = true
+                }
+                email = ""
+                password = ""
+            }
         }
-        //going to use the core data model User the entity
-        let newUser = User(context: context)
-        //going to add the information now to the core data model
-        newUser.id = UUID()
-        newUser.email = email
-        newUser.password = password
-        
-        //now save the context
-        do {
-            try context.save()
-            message = "Account Created Successfully!"
-            showAlert = true
-        } catch {
-            message = "Failed to create account. Please try again."
-            showAlert = true
-        }
-        email = ""
-        password = ""
     }
     
     //function makes sure it allows the '@' symbol
@@ -210,9 +169,7 @@ struct HomePageView_Previews: PreviewProvider {
         HomePageView(
             authenticatedPass: .constant(false),
             showAlert: .constant(false),
-            message: .constant(""),
-            loginSuccess: { _ in }
+            message: .constant("")
         )
-        .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
     }
 }

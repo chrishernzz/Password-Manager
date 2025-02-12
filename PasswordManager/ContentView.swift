@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
-import CoreData
+import FirebaseAuth
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var context
     //this data can only be within the contentView since it is a state(the parent view)
     @State private var isAuthenticated = false
-    @State private var loggedInUser: User?
-    @State private var homeViewStates: (showAlert: Bool, message: String) = (false, "")
+    @State private var showAlert = false
+    @State private var message = ""
     @State private var showAnimation = true
     
     var body: some View {
@@ -22,7 +21,7 @@ struct ContentView: View {
             //since it is initialize to true it will run this which is the animation
             if (showAnimation) {
                 AnimationScreenView()
-                    //.transition(.opacity)
+                //.transition(.opacity)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             withAnimation(.easeOut(duration: 0.5)) {
@@ -32,12 +31,11 @@ struct ContentView: View {
                     }
             }
             else {
-                                    //going to unwrap the loggedInUser
-                if(isAuthenticated), let user = loggedInUser {
+                if(isAuthenticated) {
                     //TabView will allow me to organize the app content into multiple tabs. Each tab will represent a different screen/view, letting user switch between them by tapping on the corresponding tab bar icon or label
                     TabView {
                         //they can add password
-                        AddPasswordView(loggedInUser: user)
+                        AddPasswordView()
                         //the tabItem will create the icon of the tab view for user to switch from
                             .tabItem {
                                 Image(systemName: "plus.circle")
@@ -45,27 +43,38 @@ struct ContentView: View {
                                 
                             }
                         //or look at their store passwords
-                        StorePasswordsView(loggedInUser: user)
+                        StorePasswordsView()
                             .tabItem {
                                 Image(systemName: "lock.fill")
                                 Text("Stored Passwords")
                             }
-                        SignOutView(isAuthenticated: $isAuthenticated,resetInformation: {homeViewStates = (false, "")})
+                        SignOutView(isAuthenticated: $isAuthenticated)
                             .tabItem {
                                 Image(systemName: "arrow.backward.circle")
                                 Text("Sign Out")
                             }
                     }
-                    .environment(\.managedObjectContext, context)
                 }
                 else {
-                    HomePageView(authenticatedPass: $isAuthenticated, showAlert: $homeViewStates.showAlert, message: $homeViewStates.message, loginSuccess: {user in loggedInUser = user})
-                        .environment(\.managedObjectContext, context)
+                    HomePageView(authenticatedPass: $isAuthenticated, showAlert: $showAlert, message: $message)
                 }
             }
             
         }
+        //this will appear each time the view pops up
+        .onAppear {
+            checkUserLoggedIn()
+        }
         .animation(.easeInOut(duration: 0.5), value: showAnimation)
+    }
+    //this function will check if user is logged in if they are then they don't need to sign in
+    private func checkUserLoggedIn() {
+        if Auth.auth().currentUser != nil {
+            isAuthenticated = true
+        }
+        else {
+            isAuthenticated = false
+        }
     }
 }
 //this will give the animation once you open the app
@@ -95,17 +104,22 @@ struct AnimationScreenView: View {
 struct SignOutView: View {
     //binding will allow two way connection-> changes made here are going to be changed in the parent view
     @Binding var isAuthenticated: Bool
-    //closure function to reste all the information
-    var resetInformation: () -> Void
+    @ObservedObject var authManager = AuthManager()
+    
     var body: some View {
         VStack {
             Text("Are you sure you want to sign out?")
                 .font(.headline)
                 .padding()
             Button(action: {
-                // Toggle isAuthenticated to false to log out
-                isAuthenticated = false
-                resetInformation()
+                authManager.signOutUser { success, message in
+                    if success {
+                        isAuthenticated = false
+                    }
+                    else {
+                        print("Sign-out failed: \(message)")
+                    }
+                }
             }) {
                 Text("Sign Out")
                     .frame(minWidth: 0, maxWidth: .infinity)
@@ -120,41 +134,8 @@ struct SignOutView: View {
     }
 }
 
-//this will allow me to use the CRUD-> the data of the core data model 
-struct PersistenceController {
-    static let shared = PersistenceController()
-
-    let container: NSPersistentContainer
-
-    init() {
-        container = NSPersistentContainer(name: "StoreInformation") // Replace with your Core Data model name
-        container.loadPersistentStores { description, error in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        }
-    }
-}
-//extension is used for preview functionality
-extension PersistenceController {
-    static var preview: PersistenceController = {
-        let controller = PersistenceController()
-        let storeDescription = NSPersistentStoreDescription()
-        storeDescription.type = NSInMemoryStoreType // Use in-memory store for previews
-        controller.container.persistentStoreDescriptions = [storeDescription]
-        controller.container.loadPersistentStores { _, error in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        }
-        return controller
-    }()
-}
-
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

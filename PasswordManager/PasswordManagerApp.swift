@@ -7,18 +7,19 @@
 
 import SwiftUI
 import CoreData
+import Firebase
+
 
 @main
 struct PasswordManagerApp: App {
-    let persistenceController = PersistenceController.shared
-    @StateObject private var passwordManager = PasswordManagerView(
-        context: PersistenceController.shared.container.viewContext
-    )
+    init() {
+        FirebaseApp.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environmentObject(passwordManager) // Pass as environment object
         }
     }
 }
+
