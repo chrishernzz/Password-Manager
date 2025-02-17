@@ -48,10 +48,10 @@ struct ContentView: View {
                                 Image(systemName: "lock.fill")
                                 Text("Stored Passwords")
                             }
-                        SignOutView(isAuthenticated: $isAuthenticated)
+                        SettingView(isAuthenticated: $isAuthenticated)
                             .tabItem {
-                                Image(systemName: "arrow.backward.circle")
-                                Text("Sign Out")
+                                Image(systemName: "gearshape") 
+                                Text("Settings")
                             }
                     }
                 }
@@ -98,39 +98,6 @@ struct AnimationScreenView: View {
         }
         //this will give it a transition once it is displayed
         .transition(.opacity)
-    }
-}
-//sign out struct and pass it in the tabview
-struct SignOutView: View {
-    //binding will allow two way connection-> changes made here are going to be changed in the parent view
-    @Binding var isAuthenticated: Bool
-    @ObservedObject var authManager = AuthManager()
-    
-    var body: some View {
-        VStack {
-            Text("Are you sure you want to sign out?")
-                .font(.headline)
-                .padding()
-            Button(action: {
-                authManager.signOutUser { success, message in
-                    if success {
-                        isAuthenticated = false
-                    }
-                    else {
-                        print("Sign-out failed: \(message)")
-                    }
-                }
-            }) {
-                Text("Sign Out")
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .padding()
-                    .background(Color.red)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-            }
-            .padding()
-        }
-        .padding()
     }
 }
 

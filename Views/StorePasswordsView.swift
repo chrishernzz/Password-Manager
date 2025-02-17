@@ -74,11 +74,15 @@ struct StorePasswordsView: View {
     
     //this function will allow user to delete an item (password they created)
     private func deletePassword(at offsets: IndexSet) {
-        for index in offsets {
-            let passwordToDelete = passwords[index]
-            passwordManager.deletePassword(passwordID: passwordToDelete.id) { success, message in
+        //get the id before deleting the array
+        let idsToDelete = offsets.map { passwords[$0].id }
+        
+        for id in idsToDelete {
+            passwordManager.deletePassword(passwordID: id) { success, message in
                 if success {
-                    passwords.remove(at: index)
+                    DispatchQueue.main.async {
+                        passwords.removeAll { $0.id == id } // Remove only after success
+                    }
                 } else {
                     print("Error deleting password: \(message)")
                 }

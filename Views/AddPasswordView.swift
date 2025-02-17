@@ -19,31 +19,58 @@ struct AddPasswordView: View {
     @State private var passwordStrengthColor: Color = .gray
     @State private var showAlert = false
     @State private var alertMessage = ""
-
+    
+    //will keep track of what field is active-> won't know if it has a value or if it is nil
+    @FocusState private var focusedField: Field?
+    enum Field {
+        case title, emailOrUsername, password
+    }
+    
+    
     var body: some View {
         Form {
             Section(header: Text("Website Details")) {
                 TextField("Title", text: $title)
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
-
+                    //this tells is what field are in/want to be in
+                    .focused($focusedField, equals: .title)
+                    //will change the keyboard button to "Next" or "Done"
+                    .submitLabel(.next)
+                    //this will now move the focus to the next field
+                    .onSubmit {
+                        focusedField = .emailOrUsername
+                    }
+                
                 TextField("Email or Username", text: $emailOrusername)
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
-
+                    .focused($focusedField, equals: .emailOrUsername)
+                    .submitLabel(.next)
+                    .onSubmit {
+                        focusedField = .password
+                    }
+                
                 SecureField("Password", text: $password)
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
+                    .focused($focusedField, equals: .password)
+                    //we want the button to say "Done" since there are no more inputs that we need to add
+                    .submitLabel(.done)
+                    .onSubmit {
+                        //will dismiss the keyboard
+                        focusedField = nil
+                    }
                     .onChange(of: password) { _ in
                         validatePasswordStrength(password)
                     }
                 //this will indicate the message of the error
                 Text(passwordStrengthMessage)
-                    //this will be the color of the text
+                //this will be the color of the text
                     .foregroundColor(passwordStrengthColor)
                     .font(.footnote)
             }
-
+            
             Button(action: {
                 savePassword()
             }) {
@@ -98,11 +125,15 @@ struct AddPasswordView: View {
     }
     //function going to check how strong is the user password
     func validatePasswordStrength(_ password: String) {
+        if showAlert {
+            return
+        }
+        
         //if empty then error since you cannot have a password that is empty
         if (password.isEmpty) {
             passwordStrengthMessage = "Password cannot be empty."
             passwordStrengthColor = .red
-        } 
+        }
         //has to have a length greater than 6
         else if (password.count < 6) {
             passwordStrengthMessage = "Password is too short. Minimum 6 characters."
@@ -112,7 +143,7 @@ struct AddPasswordView: View {
         else if (!isPasswordValid(password)) {
             passwordStrengthMessage = "Password must include an uppercase letter, a number, and a special character."
             passwordStrengthColor = .red
-        } 
+        }
         //if has everything then the passwrod is strong
         else {
             passwordStrengthMessage = "Strong password!"

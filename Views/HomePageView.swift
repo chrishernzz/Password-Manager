@@ -21,6 +21,13 @@ struct HomePageView: View{
     //create an observed that will allow us to observed the ObservableObject
     @ObservedObject var authMangager = AuthManager()
     
+    //will keep track of what field is active-> won't know if it has a value or if it is nil
+    @FocusState private var focusedField: Field?
+    enum Field {
+        case email, password
+    }
+    
+    
     var body: some View{
         ZStack {
             Color.gray.edgesIgnoringSafeArea(.all)
@@ -44,6 +51,11 @@ struct HomePageView: View{
                         .cornerRadius(8)
                         .foregroundColor(.black)
                         .colorScheme(.light)
+                        .focused($focusedField, equals: .email)
+                        .submitLabel(.next)
+                        .onSubmit{
+                            focusedField = .password
+                        }
                     
                     Text("Password")
                         .foregroundColor(.white)
@@ -60,6 +72,13 @@ struct HomePageView: View{
                         .cornerRadius(8)
                         .foregroundColor(.black)
                         .colorScheme(.light)
+                        .focused($focusedField, equals: .password)
+                        //we want the button to say "Done" since there are no more inputs that we need to add
+                        .submitLabel(.done)
+                        .onSubmit {
+                            //will dismiss the keyboard
+                            focusedField = nil
+                        }
                 }
                 .padding(.horizontal)
                 //need the login and sign up button side to side so use HStack-> indicates the horizontal
@@ -99,6 +118,9 @@ struct HomePageView: View{
     }
     //function to now read if the user exits
     func loginUser() {
+        //call the function where you validate the inputs
+        guard validUserInformation() else { return }
+        
         authMangager.loginUser(email: email, password: password) { success, message in
             DispatchQueue.main.async {
                 self.message = message
@@ -113,9 +135,10 @@ struct HomePageView: View{
     }
     //function for keeping track of the sign ups
     func signUpUser() {
+        guard validUserInformation() else { return }
+        
         authMangager.signUpUser(email: email, password: password) { success, message in
             DispatchQueue.main.async {
-                print("🔥 Sign-Up Debug: \(message)") // Debugging output
                 self.message = message
                 self.showAlert = true
                 if success {

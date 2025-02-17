@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC31264A2D628F3800DAEC98 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3126492D628F2900DAEC98 /* SettingView.swift */; };
 		CC42B1692C96266E00E7BD82 /* PasswordManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B1682C96266E00E7BD82 /* PasswordManagerApp.swift */; };
 		CC42B16B2C96266E00E7BD82 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC42B16A2C96266E00E7BD82 /* ContentView.swift */; };
 		CC42B16D2C96267100E7BD82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC42B16C2C96267100E7BD82 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC3126492D628F2900DAEC98 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		CC42B1652C96266E00E7BD82 /* PasswordManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PasswordManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC42B1682C96266E00E7BD82 /* PasswordManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagerApp.swift; sourceTree = "<group>"; };
 		CC42B16A2C96266E00E7BD82 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		CC42B1952C9627CD00E7BD82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CC3126492D628F2900DAEC98 /* SettingView.swift */,
 				CC42B19A2C96285900E7BD82 /* AddPasswordView.swift */,
 				CC42B19D2C96295700E7BD82 /* StorePasswordsView.swift */,
 				CCF9E17B2CE9980600B7FF27 /* HomePageView.swift */,
@@ -304,6 +307,7 @@
 				CC42B1692C96266E00E7BD82 /* PasswordManagerApp.swift in Sources */,
 				CCF9E17C2CE9980600B7FF27 /* HomePageView.swift in Sources */,
 				CC42B19B2C96285900E7BD82 /* AddPasswordView.swift in Sources */,
+				CC31264A2D628F3800DAEC98 /* SettingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +479,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -504,6 +509,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

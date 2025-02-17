@@ -71,7 +71,29 @@ class AuthManager: ObservableObject {
             }
         }
     }
-    
+    //thish will fetch the users login so we can call it in the setting view
+    func fetchUserLogins(completion: @escaping(String) ->Void) {
+        guard let userID = Auth.auth().currentUser?.uid else {
+            print("No authenticated user found.")
+            completion("No User Found")
+            return
+        }
+        
+        db.collection("users").document(userID).getDocument { document, error in
+            if let error = error {
+                print("Error fetching user email: \(error.localizedDescription)")
+                completion("Error fetching email")
+                return
+            }
+            
+            if let document = document, document.exists {
+                let email = document.data()?["email"] as? String ?? "No Email Found"
+                completion(email)
+            } else {
+                completion("No Email Found")
+            }
+        }
+    }
     //when user wants to sign out
     func signOutUser(completion: @escaping (Bool, String) -> Void) {
         do {
